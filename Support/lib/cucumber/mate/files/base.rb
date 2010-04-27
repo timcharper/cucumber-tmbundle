@@ -76,9 +76,9 @@ module Cucumber
           in_project_directory do
             case kind.to_sym
             when :feature
-              Dir['features/**/*.feature'].map { |f| FeatureFile.new(File.expand_path(f)) }
+              Dir['features/**{,/*/**}/*_steps.rb'].map { |f| FeatureFile.new(File.expand_path(f)) }
             when :steps
-              Dir['features/**/*_steps.rb'].map { |f| StepsFile.new(File.expand_path(f)) }
+              Dir['features/**{,/*/**}/*_steps.rb'].map { |f| StepsFile.new(File.expand_path(f)) }
             end
           end
         end
